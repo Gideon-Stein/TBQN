@@ -1,5 +1,5 @@
 # TBQN
-The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings". It includes fully modularized code to train, Hp optimize and evaluate a DQN agent with a Transformer based architecture as its network  (TBQN). The basic network structure is depicted below.
+The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings". It includes fully modularized code to train, Hp optimize and evaluate a DQN agent with a Transformer based architecture as its network (TBQN). The basic network structure is depicted below.
 
 <img src="architecture.png" alt="drawing" width="200"/>
 
@@ -7,7 +7,7 @@ The code base for my Master thesis "Transformer based action sequence generation
 
 This repository includes the following useful things: 
 
-  - Fully modularized code to Run a DQN agent with a Transformer based architecture as its network  (TBQN). 
+  - Fully modularized code to Run a DQN agent with a Transformer based architecture as its network (TBQN). 
   - Simple scripts to run TBQN with a mountain of different Parameters and model variations.
   - Scripts to perform parameter optimization for TBQN using the Optuna Library
   - The code and the results of the experiments I conducted during my thesis work.
@@ -45,6 +45,8 @@ You should be good to go.
  ```
  directory = "experiment_scripts/example_result"
  ```
+
+To evaluate the results of a study use Study_display.ipynb. or Study_display_2.ipynb.
  
  ## Authors
 
@@ -55,7 +57,4 @@ You should be good to go.
 ## Comments
 
 * I am currently working on an PPO version which is not finished yet. Therefore, PPO named files are not finalized neither complete. They should be ignored.
-* Due to storage I can not include concrete studies and model runs in this repository. If you are interested in anything additional data feel free to write me. 
- 
- 
- 
+* Due to storage I cannot include concrete studies and model runs in this repository. If you are interested in anything additional data, feel free to write me. 
