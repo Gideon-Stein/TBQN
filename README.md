@@ -48,13 +48,13 @@ You should be good to go.
  
  ## Authors
 
-* **Gideon Stein** - *Initial work* - [PurpleBooth](https://github.com/Gideon-Stein)
+* **Gideon Stein** - *Initial work* - [Github](https://github.com/Gideon-Stein)
 
 
 
 ## Comments
 
-* I am currently working on an PPO version which is not finnished yet. Therefore, PPO named files are not finalized neither complete. They should be ignored.
+* I am currently working on an PPO version which is not finished yet. Therefore, PPO named files are not finalized neither complete. They should be ignored.
  
  
  
