@@ -1,7 +1,7 @@
 # TBQN
 The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings"
 
-![Alt text](architecture.png)
+![Alt text](architecture.png?raw=true)
 
 ## Getting Started
 
