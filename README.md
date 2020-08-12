@@ -5,7 +5,7 @@ The code base for my Master thesis "Transformer based action sequence generation
 
 ## Getting Started
 
-It includes the following useful things: 
+This repository includes the following useful things: 
 
   - Fully modularized code to Run a DQN agent with a Transformer based architecture as its network  (TBQN). 
   - Simple scripts to run TBQN with a mountain of different Parameters and model variations.
@@ -55,6 +55,7 @@ You should be good to go.
 ## Comments
 
 * I am currently working on an PPO version which is not finished yet. Therefore, PPO named files are not finalized neither complete. They should be ignored.
+* Due to storage I can not include concrete studies and model runs in this repository. If you are interested in anything additional data feel free to write me. 
  
  
  
