@@ -3,6 +3,8 @@ The code base for my Master thesis "Transformer based action sequence generation
 
 ![Alt text](architecture.png =250x)
 
+<img src="drawing.jpg" alt="drawing" width="200"/>
+
 ## Getting Started
 
 It includes the following useful things: 
