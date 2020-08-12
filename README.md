@@ -1,8 +1,7 @@
 # TBQN
 The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings"
 
-
-This repository is build on TensorFlow and TF-Agents.
+![Alt text](architecture.png)
 
 ## Getting Started
 
