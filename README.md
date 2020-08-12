@@ -41,9 +41,9 @@ You should be good to go.
   Parameters can be added and changed accordingly to the script.
   
  
- To evaluate the results of an experiment simply load your results into Result_display.ipynb:
+ To evaluate the results of an experiment simply load your results into Result_display.ipynb. 
+ Inside the Notebook specify the saved experiment path:
  ```
- Inside the Notebook specify the saved experiment path
  directory = "experiment_scripts/example_result"
  ```
  
