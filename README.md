@@ -1,5 +1,5 @@
 # TBQN
-The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings". It includes Fully modularized code to train, Hp optimize and evaluate a DQN agent with a Transformer based architecture as its network  (TBQN). 
+The code base for my Master thesis "Transformer based action sequence generation in reinforcement learning settings". It includes fully modularized code to train, Hp optimize and evaluate a DQN agent with a Transformer based architecture as its network  (TBQN). The basic network structure is depicted below.
 
 <img src="architecture.png" alt="drawing" width="200"/>
 
