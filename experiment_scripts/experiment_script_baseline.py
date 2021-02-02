@@ -51,8 +51,8 @@ def main():
 
     ##agent parameters
     parser.add_argument("--reward_scale_factor", default=1.0, type=float)
-    parser.add_argument("--debug_summaries", default=True, type=bool)
-    parser.add_argument("--summarize_grads_and_vars", default=True, type=bool)
+    parser.add_argument("--debug_summaries", default=False, type=bool)
+    parser.add_argument("--summarize_grads_and_vars", default=False, type=bool)
 
     ##transformer parameters
     parser.add_argument("--d_model", default=64, type=int)
@@ -70,17 +70,17 @@ def main():
     parser.add_argument("--num_eval_episodes", default=10, type=int)
     parser.add_argument("--eval_interval", default=1000, type=int)
     parser.add_argument("--log_interval", default=1000, type=int)
-    parser.add_argument("--summary_interval", default=10, type=int)
+    parser.add_argument("--summary_interval", default=1000, type=int)
     parser.add_argument("--run_graph_mode", default=True, type=bool)
     parser.add_argument("--checkpoint_interval", default=10000, type=int)
     parser.add_argument("--summary_flush", default=10, type=int)   #what does this exactly do? 
 
     # HP opt params
-    parser.add_argument("--doubleQ", default=True, type=bool,help="Whether to use a  DoubleQ agent")
-    parser.add_argument("--custom_last_layer", default=True, type=bool)
+    parser.add_argument("--doubleQ", default=False, type=bool,help="Whether to use a  DoubleQ agent")
+    parser.add_argument("--custom_last_layer", default=None, type=bool)
     parser.add_argument("--custom_layer_init", default=0.5,type=float)
     parser.add_argument("--initial_collect_steps", default=1000, type=int)
-    parser.add_argument("--loss_function", default="element_wise_huber_loss", type=str)
+    parser.add_argument("--loss_function", default="element_wise_squared_loss", type=str)
     parser.add_argument("--num_heads", default=4, type=int)
     parser.add_argument("--normalize_env", default=False, type=bool)  
     parser.add_argument('--custom_lr_schedule',default="No",type=str,help = "whether to use a custom LR schedule")
@@ -90,7 +90,7 @@ def main():
     parser.add_argument("--gradient_clipping", default=None, type=bool)
     parser.add_argument("--replay_buffer_max_length", default=100000, type=int)
     parser.add_argument("--batch_size", default=32, type=int)
-    parser.add_argument("--learning_rate", default=1e-5, type=float)
+    parser.add_argument("--learning_rate", default=1e-4, type=float)
     parser.add_argument("--encoder_type", default=2, type=int,help="Which Type of encoder is used for the model")
     parser.add_argument("--layer_type", default=1, type=int,help="Which Type of layer is used for the encoder")
     parser.add_argument("--target_update_tau", default=1, type=float)

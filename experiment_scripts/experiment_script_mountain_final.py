@@ -1,6 +1,6 @@
 # GPU stuff
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="0"  
+os.environ["CUDA_VISIBLE_DEVICES"]="3"  
 
 import tensorflow as tf
 
@@ -45,8 +45,8 @@ def main():
     parser.add_argument("--output_dir", default=None, type=str, required=True,help="The output directory where the model stats and checkpoints will be written.")
     parser.add_argument("--env", default=None, type=str, required=True,help="The environment to train the agent on")
     parser.add_argument("--approx_env_boundaries", default=False, type=bool,help="Whether to get the env boundaries approximately")  
-    parser.add_argument("--max_horizon", default=3, type=int)
-    parser.add_argument("--atari", default=True, type=bool, help = "Gets some data Types correctly")
+    parser.add_argument("--max_horizon", default=5, type=int)
+    parser.add_argument("--atari", default=False, type=bool, help = "Gets some data Types correctly")
 
 
     ##agent parameters
@@ -60,7 +60,7 @@ def main():
     parser.add_argument("--dff", default=256, type=int)
 
     ##Training parameters
-    parser.add_argument('--num_iterations', type=int, default=2000000,help="steps in the env")
+    parser.add_argument('--num_iterations', type=int, default=150000,help="steps in the env")
     parser.add_argument('--num_iparallel', type=int, default=1,help="how many envs should run in parallel")
     parser.add_argument("--collect_steps_per_iteration", default=1, type=int)
     parser.add_argument("--train_steps_per_iteration", default=1, type=int)
@@ -68,27 +68,27 @@ def main():
 
     ## Other parameters
     parser.add_argument("--num_eval_episodes", default=10, type=int)
-    parser.add_argument("--eval_interval", default=10000, type=int)
-    parser.add_argument("--log_interval", default=10000, type=int)
-    parser.add_argument("--summary_interval", default=10000, type=int)
+    parser.add_argument("--eval_interval", default=1000, type=int)
+    parser.add_argument("--log_interval", default=1000, type=int)
+    parser.add_argument("--summary_interval", default=1000, type=int)
     parser.add_argument("--run_graph_mode", default=True, type=bool)
-    parser.add_argument("--checkpoint_interval", default=100000, type=int)
+    parser.add_argument("--checkpoint_interval", default=10000, type=int)
     parser.add_argument("--summary_flush", default=10, type=int)   #what does this exactly do? 
 
     # HP opt params
     parser.add_argument("--doubleQ", default=True, type=bool,help="Whether to use a  DoubleQ agent")
     parser.add_argument("--custom_last_layer", default=True, type=bool)
-    parser.add_argument("--custom_layer_init", default=1.0,type=    float)
-    parser.add_argument("--initial_collect_steps", default=5000, type=int)
+    parser.add_argument("--custom_layer_init", default=1,type=    float)
+    parser.add_argument("--initial_collect_steps", default=500, type=int)
     parser.add_argument("--loss_function", default="element_wise_huber_loss", type=str)
     parser.add_argument("--num_heads", default=4, type=int)
     parser.add_argument("--normalize_env", default=False, type=bool)  
     parser.add_argument('--custom_lr_schedule',default="No",type=str,help = "whether to use a custom LR schedule")
-    parser.add_argument("--epsilon_greedy", default=0.3, type=float)
-    parser.add_argument("--target_update_period", default=1000, type=int)
+    parser.add_argument("--epsilon_greedy", default=0.1, type=float)
+    parser.add_argument("--target_update_period", default=10, type=int)
     parser.add_argument("--rate", default=0.1, type=float)  # dropout rate  (might be not used depending on the q network)  #Setting this to 0.0 somehow break the code. Not relevant tho just select a network without dropout
     parser.add_argument("--gradient_clipping", default=True, type=bool)
-    parser.add_argument("--replay_buffer_max_length", default=200000, type=int)
+    parser.add_argument("--replay_buffer_max_length", default=100000, type=int)
     parser.add_argument("--batch_size", default=32, type=int)
     parser.add_argument("--learning_rate", default=1e-4, type=float)
     parser.add_argument("--encoder_type", default=3, type=int,help="Which Type of encoder is used for the model")
@@ -103,8 +103,8 @@ def main():
     global_step = tf.compat.v1.train.get_or_create_global_step()
 
     baseEnv = gym.make(args.env)
-    env = suite_gym.load(args.env,  gym_kwargs = { "frameskip": 4 })
-    eval_env = suite_gym.load(args.env,  gym_kwargs = { "frameskip": 4 })
+    env = suite_gym.load(args.env)
+    eval_env = suite_gym.load(args.env)
     if args.normalize_env == True:
         env = NormalizeWrapper(env,args.approx_env_boundaries,args.env)
         eval_env = NormalizeWrapper(eval_env,args.approx_env_boundaries,args.env)
@@ -157,6 +157,7 @@ def main():
             tf_env.action_spec(),
             q_network=q_net,
             epsilon_greedy=args.epsilon_greedy,
+            #boltzmann_temperature = 1,
             target_update_tau=args.target_update_tau,
             target_update_period=args.target_update_period,
             td_errors_loss_fn =lf,
@@ -173,6 +174,7 @@ def main():
             tf_env.action_spec(),
             q_network=q_net,
             epsilon_greedy=args.epsilon_greedy,
+            #boltzmann_temperature = 1,
             target_update_tau=args.target_update_tau,
             td_errors_loss_fn = lf,
             target_update_period=args.target_update_period,
